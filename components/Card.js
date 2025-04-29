@@ -1,26 +1,32 @@
 import React from 'react';
-import { TouchableOpacity, View, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
 
-export default function Card({ onPress }) {
+export default function Card({ imageUrl, title }) {
     return (
-        <TouchableOpacity onPress={onPress} style={styles.card}>
-            <View style={styles.placeholder} />
-        </TouchableOpacity>
+        <View style={styles.card}>
+            <Image source={{ uri: imageUrl }} style={styles.image} />
+            <Text style={styles.title}>{title}</Text>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
     card: {
-        width: 100,
-        height: 150,
-        backgroundColor: '#f0f0f0',
-        borderRadius: 8,
+        width: 120,
         marginRight: 10,
-        marginBottom: 10,
-    },
-    placeholder: {
-        flex: 1,
-        backgroundColor: '#ccc',
         borderRadius: 8,
+        overflow: 'hidden',
+        backgroundColor: '#f9f9f9',
+        elevation: 3,
+    },
+    image: {
+        width: '100%',
+        height: 150,
+    },
+    title: {
+        padding: 5,
+        fontSize: 14,
+        fontWeight: 'bold',
+        textAlign: 'center',
     },
 });
